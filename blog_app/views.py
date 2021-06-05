@@ -72,10 +72,10 @@ def add_comment(request,pk):
             comment=form.save(commit=False)
             comment.post=post
             comment.save()
-            return redirect('post_detail',pk=post.pk,{'form':form})
+            return redirect('post_detail',pk=post.pk)
     else:
         form=CommentForm()
-        return render(request,'blog/comment_form.html')
+        return render(request,'blog/comment_form.html',{'form':form})
 
 @login_required
 def approve_comment(request,pk):
